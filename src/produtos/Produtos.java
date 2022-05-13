@@ -16,7 +16,7 @@ public class Produtos {
     }
 
     public void setNome (String newNome) {
-        this.nome = newNome;    
+        this.nome = newNome;
     }
     public String getNome () {
         return this.nome; 
