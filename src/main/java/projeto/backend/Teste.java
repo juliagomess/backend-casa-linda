@@ -13,10 +13,7 @@ public class Teste implements ApplicationListener<ContextRefreshedEvent>{
     private ProdutoService service;
     @Override
     public void onApplicationEvent(ContextRefreshedEvent event) {
-        Produto produto = new Produto();
-       // produto.setNome("joao");
-        //service.save(produto);
-        service.deletebyId(1L);
+      service.cadastra("gabriel","joao","julia","gabriel gay", (float) 1.10);
        System.out.println(service.findAll());
 
     }

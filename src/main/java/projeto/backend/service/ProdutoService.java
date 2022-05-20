@@ -12,10 +12,16 @@ import java.util.Optional;
 public class ProdutoService {
     @Autowired
     private ProdutosRepository repository;
-    public Produto save(Produto produto){
+
+    public Produto cadastra(String nome, String fornecedor, String grupo, String descricao, float custo){
+        Produto produto = new Produto();
+        produto.setNome(nome);
+        produto.setFornecedor(fornecedor);
+        produto.setGrupo(grupo);
+        produto.setDescricao(descricao);
+        produto.setCusto(custo);
         return repository.save(produto);
     }
-
     public void deletebyId(Long id){
         Optional<Produto> read = read(id);
         if(read.isPresent()){
