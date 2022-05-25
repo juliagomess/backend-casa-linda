@@ -12,8 +12,7 @@ public class Movimentacao {
     @Id
     @GeneratedValue(strategy= GenerationType.SEQUENCE)
     private long id;
-    @ForeignKey
-    private Produto produto;
+    private long cod_produto;
     private int tipo;
     private int quantidade;
     private float valor_entrada;
