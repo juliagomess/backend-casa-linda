@@ -35,4 +35,11 @@ public class ProdutoService {
     public List<Produto> findAll(){
         return repository.findAll();
     }
+
+    public boolean retorna(Long id){
+        Produto p = new Produto();
+        p = repository.getById(id);
+        System.out.println(p);
+        return false;
+    }
 }
