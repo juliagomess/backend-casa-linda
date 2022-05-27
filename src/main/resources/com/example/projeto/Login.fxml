@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <ImageView fitHeight="400.0" fitWidth="591.0" layoutX="18.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@Casa-Linda.png" />
+         </image>
+         <effect>
+            <BoxBlur height="11.07" iterations="3" width="11.07" />
+         </effect>
+      </ImageView>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#f58265" height="255.0" layoutX="180.0" layoutY="79.0" opacity="0.33" stroke="BLACK" strokeType="INSIDE" width="241.0" />
+      <Label layoutX="197.0" layoutY="100.0" text="Entrar" textFill="WHITE">
+         <font>
+            <Font name="Times New Roman Bold" size="22.0" />
+         </font>
+      </Label>
+      <TextField layoutX="198.0" layoutY="141.0" prefHeight="35.0" prefWidth="205.0" promptText="Usuário" />
+      <TextField layoutX="198.0" layoutY="194.0" prefHeight="35.0" prefWidth="205.0" promptText="Senha" />
+      <Label fx:id="esqueceuSenha" layoutX="198.0" layoutY="246.0" onMouseClicked="#recuperarSenha" text="Esqueceu sua senha?" textFill="#ff2a00" />
+      <Button layoutX="237.0" layoutY="278.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="136.0" style="-fx-background-color: rgb(255,42,0);" text="Entrar" textFill="WHITE">
+         <font>
+            <Font name="Times New Roman Bold" size="16.0" />
+         </font>
+      </Button>
+   </children>
+</AnchorPane>

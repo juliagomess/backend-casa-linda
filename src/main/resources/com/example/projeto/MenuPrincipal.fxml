@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1">
+    <children>
+        <ImageView fitHeight="400.0" fitWidth="591.0" layoutX="18.0" pickOnBounds="true" preserveRatio="true">
+            <image>
+                <Image url="@Casa-Linda.png" />
+            </image>
+            <effect>
+                <BoxBlur height="11.07" iterations="3" width="11.07" />
+            </effect>
+        </ImageView>
+        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#f58265" height="272.0" layoutX="180.0" layoutY="62.0" opacity="0.33" stroke="BLACK" strokeType="INSIDE" width="241.0" />
+        <Label layoutX="226.0" layoutY="80.0" text="Menu Principal" textFill="WHITE">
+            <font>
+                <Font name="Times New Roman Bold" size="22.0" />
+            </font>
+        </Label>
+        <Button layoutX="223.0" layoutY="134.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="155.0" style="-fx-background-color: rgb(255,42,0);" text="Em estoque" textFill="WHITE">
+            <font>
+                <Font name="Times New Roman Bold" size="16.0" />
+            </font>
+        </Button>
+      <Button layoutX="223.0" layoutY="181.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="155.0" style="-fx-background-color: rgb(255,42,0);" text="Produtos" textFill="WHITE">
+         <font>
+            <Font name="Times New Roman Bold" size="16.0" />
+         </font>
+      </Button>
+      <Button layoutX="223.0" layoutY="225.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="155.0" style="-fx-background-color: rgb(255,42,0);" text="Movimentações" textFill="WHITE">
+         <font>
+            <Font name="Times New Roman" size="16.0" />
+         </font>
+      </Button>
+      <Button layoutX="223.0" layoutY="274.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="155.0" style="-fx-background-color: rgb(255,42,0);" text="Relatório" textFill="WHITE">
+         <font>
+            <Font name="Times New Roman Bold" size="16.0" />
+         </font>
+      </Button>
+    </children>
+</AnchorPane>
