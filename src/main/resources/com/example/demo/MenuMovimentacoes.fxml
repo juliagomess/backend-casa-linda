@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.effect.*?>
 <?import javafx.scene.image.*?>
@@ -7,7 +8,7 @@
 <?import javafx.scene.shape.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.MenuMovimentacoes">
     <children>
         <ImageView fitHeight="400.0" fitWidth="591.0" layoutX="18.0" pickOnBounds="true" preserveRatio="true">
             <image>
@@ -27,11 +28,17 @@
             <font>
                 <Font name="Times New Roman Bold" size="16.0" />
             </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
         </Button>
-        <Button layoutX="210.0" layoutY="222.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="188.0" style="-fx-background-color: rgb(255,42,0);" text="Realizar Movimentação" textFill="WHITE">
+        <Button layoutX="210.0" layoutY="222.0" mnemonicParsing="false" onAction="#CadastraMovTela" prefHeight="35.0" prefWidth="188.0" style="-fx-background-color: rgb(255,42,0);" text="Realizar Movimentação" textFill="WHITE">
             <font>
                 <Font name="Times New Roman Bold" size="16.0" />
             </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
         </Button>
     </children>
 </AnchorPane>

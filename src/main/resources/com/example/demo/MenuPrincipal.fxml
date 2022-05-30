@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.effect.*?>
 <?import javafx.scene.image.*?>
@@ -7,7 +8,7 @@
 <?import javafx.scene.shape.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.MenuController">
     <children>
         <ImageView fitHeight="400.0" fitWidth="591.0" layoutX="18.0" pickOnBounds="true" preserveRatio="true">
             <image>
@@ -27,21 +28,34 @@
             <font>
                 <Font name="Times New Roman Bold" size="16.0" />
             </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
         </Button>
-      <Button layoutX="223.0" layoutY="181.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="155.0" style="-fx-background-color: rgb(255,42,0);" text="Produtos" textFill="WHITE">
+      <Button layoutX="223.0" onAction="#ProdutoTela" layoutY="181.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="155.0" style="-fx-background-color: rgb(255,42,0);" text="Produtos" textFill="WHITE">
          <font>
             <Font name="Times New Roman Bold" size="16.0" />
          </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
       </Button>
-      <Button layoutX="223.0" layoutY="225.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="155.0" style="-fx-background-color: rgb(255,42,0);" text="Movimentações" textFill="WHITE">
+      <Button layoutX="223.0" layoutY="225.0" mnemonicParsing="false" onAction="#MovimentacoesTela" prefHeight="35.0" prefWidth="155.0" style="-fx-background-color: rgb(255,42,0);" text="Movimentações" textFill="WHITE">
          <font>
-            <Font name="Times New Roman" size="16.0" />
+            <Font name="Times New Roman Bold" size="16.0" />
          </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+
       </Button>
       <Button layoutX="223.0" layoutY="274.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="155.0" style="-fx-background-color: rgb(255,42,0);" text="Relatório" textFill="WHITE">
          <font>
             <Font name="Times New Roman Bold" size="16.0" />
          </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
       </Button>
     </children>
 </AnchorPane>
