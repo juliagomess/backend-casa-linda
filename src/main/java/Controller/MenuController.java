@@ -67,7 +67,7 @@ public class MenuController {
             Stage stage = new Stage();
             FXMLLoader fxmlLoader = new FXMLLoader(LoginApplication.class.getResource("MenuMovimentacoes.fxml"));
             Scene scene = new Scene(fxmlLoader.load(), 620, 400);
-            stage.setTitle("Produto");
+            stage.setTitle("Menu movimentações");
             stage.setScene(scene);
             stage.show();
 
