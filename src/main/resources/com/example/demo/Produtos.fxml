@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<SplitPane dividerPositions="0.23076923076923078" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.CadastraProdutosController">
+    <items>
+        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="398.0" prefWidth="160.0" style="-fx-background-color: #ab9476;">
+            <children>
+                <Label layoutX="30.0" layoutY="21.0" text="Menu" textFill="WHITE">
+                    <font>
+                        <Font name="Times New Roman Bold" size="31.0" />
+                    </font>
+                </Label>
+            </children></AnchorPane>
+        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0" style="-fx-background-color: #D2B48C;">
+            <children>
+                <Label layoutX="26.0" layoutY="25.0" styleClass="Cor_titulos" text="Produtos">
+                    <font>
+                        <Font name="Times New Roman" size="22.0" />
+                    </font>
+                </Label>
+            <TextField layoutX="268.0" layoutY="25.0" prefHeight="25.0" prefWidth="161.0" promptText="Pesquisar..." />
+            <TableView layoutX="47.0" layoutY="83.0" prefHeight="273.0" prefWidth="363.0">
+              <columns>
+                <TableColumn prefWidth="90.0" text="Código" />
+                <TableColumn prefWidth="90.0" text="Nome" />
+                  <TableColumn prefWidth="90.0" text="Grupo" />
+                  <TableColumn prefWidth="90.0" text="Detalhes" />
+              </columns>
+            </TableView>
+            </children></AnchorPane>
+    </items>
+</SplitPane>

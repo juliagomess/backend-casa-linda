@@ -1,6 +1,6 @@
 package Controller;
 
-import com.example.demo.RecuperaSenhaApplication;
+import com.example.demo.LoginApplication;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -22,7 +22,7 @@ public class MenuController {
 
             currentStage.close();
             Stage stage = new Stage();
-            FXMLLoader fxmlLoader = new FXMLLoader(RecuperaSenhaApplication.class.getResource("EmEstoque.fxml"));
+            FXMLLoader fxmlLoader = new FXMLLoader(LoginApplication.class.getResource("EmEstoque.fxml"));
             Scene scene = new Scene(fxmlLoader.load(), 620, 400);
             stage.setTitle("Em estoque");
             stage.setScene(scene);
@@ -43,7 +43,7 @@ public class MenuController {
 
             currentStage.close();
             Stage stage = new Stage();
-            FXMLLoader fxmlLoader = new FXMLLoader(RecuperaSenhaApplication.class.getResource("MenuProduto.fxml"));
+            FXMLLoader fxmlLoader = new FXMLLoader(LoginApplication.class.getResource("MenuProduto.fxml"));
             Scene scene = new Scene(fxmlLoader.load(), 620, 400);
             stage.setTitle("Menu produto");
                     stage.setScene(scene);
@@ -65,7 +65,7 @@ public class MenuController {
 
             currentStage.close();
             Stage stage = new Stage();
-            FXMLLoader fxmlLoader = new FXMLLoader(RecuperaSenhaApplication.class.getResource("MenuMovimentacoes.fxml"));
+            FXMLLoader fxmlLoader = new FXMLLoader(LoginApplication.class.getResource("MenuMovimentacoes.fxml"));
             Scene scene = new Scene(fxmlLoader.load(), 620, 400);
             stage.setTitle("Produto");
             stage.setScene(scene);
@@ -87,7 +87,7 @@ public class MenuController {
 
             currentStage.close();
             Stage stage = new Stage();
-            FXMLLoader fxmlLoader = new FXMLLoader(RecuperaSenhaApplication.class.getResource("RelatorioTela.fxml"));
+            FXMLLoader fxmlLoader = new FXMLLoader(LoginApplication.class.getResource("RelatorioTela.fxml"));
             Scene scene = new Scene(fxmlLoader.load(), 620, 400);
             stage.setTitle("Produto");
             stage.setScene(scene);
