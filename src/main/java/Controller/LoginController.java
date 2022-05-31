@@ -3,7 +3,7 @@ package Controller;
 import Conexao.ConexaoDAO;
 import Conexao.UsuarioDAO;
 import com.example.demo.Login;
-import com.example.demo.RecuperaSenhaApplication;
+import com.example.demo.LoginApplication;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -35,7 +35,7 @@ public class LoginController {
             Stage currentStage = (Stage) node.getScene().getWindow();
             currentStage.close();
             Stage stage = new Stage();
-            FXMLLoader fxmlLoader = new FXMLLoader(RecuperaSenhaApplication.class.getResource("MenuPrincipal.fxml"));
+            FXMLLoader fxmlLoader = new FXMLLoader(LoginApplication.class.getResource("MenuPrincipal.fxml"));
             Scene scene = new Scene(fxmlLoader.load(), 620, 400);
             stage.setTitle("Menu");
             stage.setScene(scene);
@@ -51,7 +51,7 @@ public class LoginController {
             Stage currentStage = (Stage) node.getScene().getWindow();
             currentStage.close();
             Stage stage = new Stage();
-            FXMLLoader fxmlLoader = new FXMLLoader(RecuperaSenhaApplication.class.getResource("RecuperarSenha.fxml"));
+            FXMLLoader fxmlLoader = new FXMLLoader(LoginApplication.class.getResource("RecuperarSenha.fxml"));
             Scene scene = new Scene(fxmlLoader.load(), 620, 400);
             stage.setTitle("Recuperar senha");
             stage.setScene(scene);

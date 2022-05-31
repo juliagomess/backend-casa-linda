@@ -24,7 +24,7 @@
                 <Font name="Times New Roman Bold" size="22.0" />
             </font>
         </Label>
-        <Button layoutX="210.0" layoutY="175.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="188.0" style="-fx-background-color: rgb(255,42,0);" text="Lista de Movimentações" textFill="WHITE">
+        <Button layoutX="210.0" layoutY="175.0" mnemonicParsing="false" prefHeight="35.0"  onAction="#ListaMovimentacoes" prefWidth="188.0" style="-fx-background-color: rgb(255,42,0);" text="Lista de Movimentações" textFill="WHITE">
             <font>
                 <Font name="Times New Roman Bold" size="16.0" />
             </font>

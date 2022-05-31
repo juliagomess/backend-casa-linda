@@ -28,6 +28,48 @@ public class MovimentacaoDAO {
         }
     }
 
+    public ResultSet filtrarCod(Movimentacao objmovimentacao) {
+        conn = new ConexaoDAO().conectaBD();
+        try {
+            String sql = "select * from movimentacoes where cod = ? ";
+            PreparedStatement pstm = conn.prepareStatement(sql);
+            pstm.setInt(1,objmovimentacao.getCod());
+            ResultSet rs = pstm.executeQuery();
+            return rs;
+        }catch (SQLException e){
+            System.out.println(e);
+            return null;
+        }
+    }
+
+    public ResultSet filtrarData(Movimentacao objmovimentacao) {
+        conn = new ConexaoDAO().conectaBD();
+        try {
+            String sql = "select * from movimentacoes where data = ? ";
+            PreparedStatement pstm = conn.prepareStatement(sql);
+            pstm.setString(1,objmovimentacao.getData());
+            ResultSet rs = pstm.executeQuery();
+            return rs;
+        }catch (SQLException e){
+            System.out.println(e);
+            return null;
+        }
+    }
+
+    public ResultSet filtrarTipo(Movimentacao objmovimentacao) {
+        conn = new ConexaoDAO().conectaBD();
+        try {
+            String sql = "select * from movimentacoes where tipo = ? ";
+            PreparedStatement pstm = conn.prepareStatement(sql);
+            pstm.setString(1,objmovimentacao.getTipo());
+            ResultSet rs = pstm.executeQuery();
+            return rs;
+        }catch (SQLException e){
+            System.out.println(e);
+            return null;
+        }
+    }
+
     public ResultSet retornaPreco(Movimentacao objmovimentacao) {
         conn = new ConexaoDAO().conectaBD();
         try {

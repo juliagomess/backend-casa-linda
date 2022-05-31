@@ -4,7 +4,7 @@ import Conexao.MovimentacaoDAO;
 import Conexao.ProdutosDAO;
 import com.example.demo.Movimentacao;
 import com.example.demo.Produtos;
-import com.example.demo.RecuperaSenhaApplication;
+import com.example.demo.LoginApplication;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -65,7 +65,7 @@ public class CadastraMovimentacaoController implements Initializable{
             Stage currentStage = (Stage) node.getScene().getWindow();
             currentStage.close();
             Stage stage = new Stage();
-            FXMLLoader fxmlLoader = new FXMLLoader(RecuperaSenhaApplication.class.getResource("MenuMovimentacoes.fxml"));
+            FXMLLoader fxmlLoader = new FXMLLoader(LoginApplication.class.getResource("MenuMovimentacoes.fxml"));
             Scene scene = new Scene(fxmlLoader.load(), 620, 400);
             stage.setTitle("Cadastro de movimentações");
             stage.setScene(scene);
@@ -102,11 +102,11 @@ public class CadastraMovimentacaoController implements Initializable{
                 if(validaData(m.getData())){
                     objmovimentacaodao.cadastrarMovimentacao(m);
                     JOptionPane.showMessageDialog(null, "Movimentação realizada com sucesso");
+                    txtcodigo.setText("");
+                    txtvalor.setText("");
+                    txtquantidade.setText("");
+                    txtdata.setText("");
                 }
-                txtcodigo.setText("");
-                txtvalor.setText("");
-                txtquantidade.setText("");
-                txtdata.setText("");
             }
             else{
                 JOptionPane.showMessageDialog(null, "Codigo inexistente");

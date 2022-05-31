@@ -1,6 +1,6 @@
 package Controller;
 
-import com.example.demo.RecuperaSenhaApplication;
+import com.example.demo.LoginApplication;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -18,7 +18,7 @@ public class MenuProdutosController {
             Stage currentStage = (Stage) node.getScene().getWindow();
             currentStage.close();
             Stage stage = new Stage();
-            FXMLLoader fxmlLoader = new FXMLLoader(RecuperaSenhaApplication.class.getResource("CadastraProdutos.fxml"));
+            FXMLLoader fxmlLoader = new FXMLLoader(LoginApplication.class.getResource("CadastraProdutos.fxml"));
             Scene scene = new Scene(fxmlLoader.load(), 620, 400);
             stage.setTitle("Cadastrar Produtos");
             stage.setScene(scene);
@@ -34,7 +34,7 @@ public class MenuProdutosController {
             Stage currentStage = (Stage) node.getScene().getWindow();
             currentStage.close();
             Stage stage = new Stage();
-            FXMLLoader fxmlLoader = new FXMLLoader(RecuperaSenhaApplication.class.getResource("DetalhesProduto.fxml"));
+            FXMLLoader fxmlLoader = new FXMLLoader(LoginApplication.class.getResource("DetalhesProduto.fxml"));
             Scene scene = new Scene(fxmlLoader.load(), 620, 400);
             stage.setTitle("Detalhes Produto");
             stage.setScene(scene);
