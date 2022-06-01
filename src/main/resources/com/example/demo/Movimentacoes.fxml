@@ -22,11 +22,11 @@
                     </font>
                 </Label>
                 <TextField fx:id="pesquisa" layoutX="223.0" layoutY="50.0" prefHeight="25.0" prefWidth="187.0" promptText="Pesquisar..." />
-                <TableView layoutX="47.0" layoutY="83.0" prefHeight="273.0" prefWidth="363.0">
+                <TableView fx:id="tabela" layoutX="47.0" layoutY="83.0" prefHeight="273.0" prefWidth="363.0">
                     <columns>
-                        <TableColumn prefWidth="90.0" text="Código" />
-                        <TableColumn prefWidth="90.0" text="Data" />
-                        <TableColumn prefWidth="90.0" text="Quantidade" />
+                        <TableColumn fx:id="tabelacod" prefWidth="90.0" text="Código" />
+                        <TableColumn fx:id="tabeladata" prefWidth="90.0" text="Data" />
+                        <TableColumn fx:id="tabelaqtd" prefWidth="90.0" text="Quantidade" />
                         <TableColumn prefWidth="92.0" text="Tipo" />
                     </columns>
                 </TableView>

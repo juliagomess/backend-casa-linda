@@ -7,7 +7,10 @@ import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.ComboBox;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
+import javafx.scene.control.cell.PropertyValueFactory;
 
 import java.net.URL;
 import java.sql.ResultSet;
@@ -24,6 +27,26 @@ public class MovimentacoesController implements Initializable {
     private List<Categoria> categorias = new ArrayList<>();
     private ObservableList<Categoria> obsCategorias;
 
+    @FXML
+    private TableView<Movimentacao> tabela;
+    @FXML
+    private TableColumn<Movimentacao, Integer> tabelacod;
+    @FXML
+    private TableColumn<Movimentacao,String> tabeladata;
+    @FXML
+    private TableColumn<Movimentacao, Integer> tabelaqtd;
+    @FXML
+    private TableColumn<Movimentacao,String> tabelatipo;
+
+    public void iniciarTabela(){
+        tabelacod.setCellValueFactory(new PropertyValueFactory("cod"));
+        tabelatipo.setCellValueFactory(new PropertyValueFactory("tipo"));
+        tabelaqtd.setCellValueFactory(new PropertyValueFactory("quantidade"));
+        tabeladata.setCellValueFactory(new PropertyValueFactory("data"));
+    }
+    public ObservableList<Movimentacao> atualizaTabela(){
+
+    }
     public void carregarCategorias(){
         Categoria categoria1 = new Categoria(1,"Codigo");
         Categoria categoria2 = new Categoria(2,"Data");
@@ -52,6 +75,9 @@ public class MovimentacoesController implements Initializable {
             try{
                 if(rsmovimentacaodao.next()) {
                     System.out.printf("Achou codigo");
+                    System.out.print(rsmovimentacaodao.getInt(2));
+                    //tabela.setItems();
+
                 } else {
                     System.out.printf("nao achou codigo");
                 }
@@ -94,6 +120,7 @@ public class MovimentacoesController implements Initializable {
 
         }
     }
+
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
