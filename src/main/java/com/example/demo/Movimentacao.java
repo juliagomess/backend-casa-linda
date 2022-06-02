@@ -8,6 +8,17 @@ public class Movimentacao {
     private double valor;
     private String data;
 
+    public Movimentacao(String tipo, int quantidade, int cod, String data) {
+        this.tipo = tipo;
+        this.quantidade = quantidade;
+        this.cod = cod;
+        this.data = data;
+    }
+
+    public Movimentacao() {
+
+    }
+
     public String getData() {
         return data;
     }

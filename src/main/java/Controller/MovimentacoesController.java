@@ -38,15 +38,9 @@ public class MovimentacoesController implements Initializable {
     @FXML
     private TableColumn<Movimentacao,String> tabelatipo;
 
-    public void iniciarTabela(){
-        tabelacod.setCellValueFactory(new PropertyValueFactory("cod"));
-        tabelatipo.setCellValueFactory(new PropertyValueFactory("tipo"));
-        tabelaqtd.setCellValueFactory(new PropertyValueFactory("quantidade"));
-        tabeladata.setCellValueFactory(new PropertyValueFactory("data"));
-    }
-    public ObservableList<Movimentacao> atualizaTabela(){
 
-    }
+    ObservableList<Movimentacao> oblist  = FXCollections.observableArrayList();
+
     public void carregarCategorias(){
         Categoria categoria1 = new Categoria(1,"Codigo");
         Categoria categoria2 = new Categoria(2,"Data");
@@ -64,27 +58,26 @@ public class MovimentacoesController implements Initializable {
     }
 
     public void filtrar() {
+        tabela.getItems().clear();
+        tabelacod.setCellValueFactory(new PropertyValueFactory("cod"));
+        tabelatipo.setCellValueFactory(new PropertyValueFactory("tipo"));
+        tabelaqtd.setCellValueFactory(new PropertyValueFactory("quantidade"));
+        tabeladata.setCellValueFactory(new PropertyValueFactory("data"));
         String filtro = pegarCategoria();
         Movimentacao m = new Movimentacao();
-
         MovimentacaoDAO objmovimentacaodao = new MovimentacaoDAO();
         ResultSet rsmovimentacaodao = objmovimentacaodao.verificaCod(m);
         if(filtro.equals("Codigo")) {
             m.setCod(Integer.parseInt(pesquisa.getText()));
             rsmovimentacaodao= objmovimentacaodao.filtrarCod(m);
             try{
-                if(rsmovimentacaodao.next()) {
-                    System.out.printf("Achou codigo");
-                    System.out.print(rsmovimentacaodao.getInt(2));
-                    //tabela.setItems();
-
-                } else {
-                    System.out.printf("nao achou codigo");
+                while(rsmovimentacaodao.next()) {
+                    oblist.add(new Movimentacao(rsmovimentacaodao.getString("tipo"), rsmovimentacaodao.getInt("quantidade"), rsmovimentacaodao.getInt("cod"), rsmovimentacaodao.getString("data")));
+                    tabela.setItems(oblist);
                 }
             } catch (Exception e) {
                 System.out.print(e);
             }
-
         } else if(filtro.equals("Data")) {
             m.setData(pesquisa.getText());
             CadastraMovimentacaoController cm = new CadastraMovimentacaoController();
@@ -96,10 +89,9 @@ public class MovimentacoesController implements Initializable {
 
             rsmovimentacaodao= objmovimentacaodao.filtrarData(m);
             try{
-                if(rsmovimentacaodao.next()) {
-                    System.out.printf("Achou data");
-                } else {
-                    System.out.printf("nao achou data");
+                while(rsmovimentacaodao.next()) {
+                    oblist.add(new Movimentacao(rsmovimentacaodao.getString("tipo"), rsmovimentacaodao.getInt("quantidade"), rsmovimentacaodao.getInt("cod"), rsmovimentacaodao.getString("data")));
+                    tabela.setItems(oblist);
                 }
             } catch (Exception e) {
                 System.out.print(e);
@@ -109,10 +101,9 @@ public class MovimentacoesController implements Initializable {
             m.setTipo(pesquisa.getText());
             rsmovimentacaodao= objmovimentacaodao.filtrarTipo(m);
             try{
-                if(rsmovimentacaodao.next()) {
-                    System.out.printf("Achou tipo");
-                } else {
-                    System.out.printf("nao achou tipo");
+                while(rsmovimentacaodao.next()) {
+                    oblist.add(new Movimentacao(rsmovimentacaodao.getString("tipo"), rsmovimentacaodao.getInt("quantidade"), rsmovimentacaodao.getInt("cod"), rsmovimentacaodao.getString("data")));
+                    tabela.setItems(oblist);
                 }
             } catch (Exception e) {
                 System.out.print(e);
@@ -124,7 +115,9 @@ public class MovimentacoesController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+
         carregarCategorias();
+
     }
 
 }
