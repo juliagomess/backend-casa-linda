@@ -10,7 +10,7 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
-public class MenuMovimentacoes {
+public class MenuMovimentacoesController {
     @FXML
     protected void CadastraMovTela(ActionEvent actionEvent) {
         try {

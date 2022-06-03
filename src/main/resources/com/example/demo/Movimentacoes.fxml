@@ -8,11 +8,11 @@
     <items>
         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="398.0" prefWidth="160.0" style="-fx-background-color: #ab9476;">
             <children>
-                <Label layoutX="30.0" layoutY="21.0" text="Menu" textFill="WHITE">
+                <Button onAction="#voltarTela" layoutX="8.0" layoutY="23.0" style="-fx-background-color: #ab9476;" text="Menu" textFill="WHITE">
                     <font>
                         <Font name="Times New Roman Bold" size="31.0" />
                     </font>
-                </Label>
+                </Button>
             </children></AnchorPane>
         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0" style="-fx-background-color: #D2B48C;">
             <children>
@@ -21,7 +21,7 @@
                         <Font name="Times New Roman" size="22.0" />
                     </font>
                 </Label>
-                <TextField fx:id="pesquisa" layoutX="223.0" layoutY="50.0" prefHeight="25.0" prefWidth="187.0" promptText="Pesquisar..." />
+
                 <TableView fx:id="tabela" layoutX="47.0" layoutY="83.0" prefHeight="273.0" prefWidth="363.0">
                     <columns>
                         <TableColumn fx:id="tabelacod" prefWidth="90.0" text="Código" />
@@ -30,6 +30,7 @@
                         <TableColumn fx:id="tabelatipo" prefWidth="92.0" text="Tipo" />
                     </columns>
                 </TableView>
+                <TextField fx:id="pesquisa" layoutX="223.0" layoutY="50.0" prefHeight="25.0" prefWidth="187.0" promptText="Pesquisar..." />
             <Button layoutX="358.0" layoutY="50.0" mnemonicParsing="false" onAction="#filtrar" text="Buscar" />
             <ComboBox fx:id="filtro" layoutX="223.0" layoutY="25.0" onAction="#pegarCategoria" prefHeight="25.0" prefWidth="187.0" promptText="Filtrar por" />
             </children></AnchorPane>

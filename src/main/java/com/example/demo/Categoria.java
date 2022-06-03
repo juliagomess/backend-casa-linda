@@ -1,4 +1,4 @@
-package Controller;
+package com.example.demo;
 
 public class Categoria {
     private int id;

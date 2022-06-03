@@ -70,19 +70,19 @@ public class MovimentacaoDAO {
         }
     }
 
-    public ResultSet retornaPreco(Movimentacao objmovimentacao) {
+    public ResultSet listarTodos(Movimentacao objmovimentacao){
         conn = new ConexaoDAO().conectaBD();
-        try {
-            String sql = "select valor_venda from produtos where cod = ? ";
-            PreparedStatement pstm = conn.prepareStatement(sql);
-            pstm.setInt(1,objmovimentacao.getCod());
-            ResultSet rs = pstm.executeQuery();
-            return rs;
-        }catch (SQLException e){
-            System.out.println(e);
-            return null;
+         try {
+             String sql = "select * from movimentacoes";
+             PreparedStatement pstm = conn.prepareStatement(sql);
+             ResultSet rs = pstm.executeQuery();
+             return rs;
+         }catch(Exception e){
+             System.out.print(e);
+             return  null;
         }
     }
+
 
     @FXML
     public void cadastrarMovimentacao(Movimentacao objmovimentacao) {

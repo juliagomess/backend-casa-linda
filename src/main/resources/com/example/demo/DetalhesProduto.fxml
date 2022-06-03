@@ -5,7 +5,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<SplitPane dividerPositions="0.23076923076923078" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.DetalhesProdutosController">
+<SplitPane dividerPositions="0.23076923076923078" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.ListaProdutosController">
     <items>
         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="398.0" prefWidth="160.0" style="-fx-background-color: #ab9476;">
             <children>
@@ -50,6 +50,7 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
             </Button>
+
             <Button layoutX="168.0" layoutY="330.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="120.0" style="-fx-background-color: rgb(255, 42, 0);" text="Excluir" textFill="WHITE">
                <font>
                   <Font size="16.0" />
@@ -58,6 +59,7 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
             </Button>
+
             </children></AnchorPane>
     </items>
 </SplitPane>

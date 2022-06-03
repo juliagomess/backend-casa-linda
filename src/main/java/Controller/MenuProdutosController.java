@@ -34,9 +34,9 @@ public class MenuProdutosController {
             Stage currentStage = (Stage) node.getScene().getWindow();
             currentStage.close();
             Stage stage = new Stage();
-            FXMLLoader fxmlLoader = new FXMLLoader(LoginApplication.class.getResource("DetalhesProduto.fxml"));
+            FXMLLoader fxmlLoader = new FXMLLoader(LoginApplication.class.getResource("ListarProdutos.fxml"));
             Scene scene = new Scene(fxmlLoader.load(), 620, 400);
-            stage.setTitle("Detalhes Produto");
+            stage.setTitle("Lista de produtos");
             stage.setScene(scene);
             stage.show();
         } catch (IOException e) {

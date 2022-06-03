@@ -24,7 +24,7 @@
                 <Font name="Times New Roman Bold" size="22.0" />
             </font>
         </Label>
-        <Button layoutX="223.0" layoutY="134.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="155.0" style="-fx-background-color: rgb(255,42,0);" text="Em estoque" textFill="WHITE">
+        <Button layoutX="223.0" onAction="#EstoqueTela" layoutY="134.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="155.0" style="-fx-background-color: rgb(255,42,0);" text="Em estoque" textFill="WHITE">
             <font>
                 <Font name="Times New Roman Bold" size="16.0" />
             </font>

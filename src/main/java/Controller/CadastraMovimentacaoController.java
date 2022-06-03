@@ -1,10 +1,8 @@
 package Controller;
+import Conexao.EstoqueDAO;
+import com.example.demo.*;
 import javafx.scene.control.TextField;
 import Conexao.MovimentacaoDAO;
-import Conexao.ProdutosDAO;
-import com.example.demo.Movimentacao;
-import com.example.demo.Produtos;
-import com.example.demo.LoginApplication;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -13,16 +11,12 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Scene;
-import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.ComboBox;
 import javafx.stage.Stage;
 import java.sql.ResultSet;
 import javax.swing.*;
-import java.awt.*;
 import java.io.IOException;
 import java.net.URL;
-import java.sql.ResultSet;
-import java.util.AbstractList;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
@@ -80,28 +74,40 @@ public class CadastraMovimentacaoController implements Initializable{
         carregarCategorias();
     }
 
+
     @FXML
     protected void cadastrarMovimentacao(ActionEvent actionEvent) {
         Produtos p = new Produtos();
         Movimentacao m = new Movimentacao();
+        Estoque e=  new Estoque();
         try {
             m.setCod(Integer.parseInt(txtcodigo.getText()));
             m.setQuantidade(Integer.parseInt(txtquantidade.getText()));
             m.setValor(Double.parseDouble(txtvalor.getText()));
             m.setTipo(pegarCategoria());
             m.setData(txtdata.getText());
-        } catch (Exception e) {
+        } catch (Exception er) {
             JOptionPane.showMessageDialog(null, "Você precisa preencher todos os campos");
-            return;
+
         }
         //validaValor(m.getValor());
         MovimentacaoDAO objmovimentacaodao = new MovimentacaoDAO();
+        EstoqueDAO objestoquedao = new EstoqueDAO();
         ResultSet rsmovimentacaodao = objmovimentacaodao.verificaCod(m);
         try {
             if(rsmovimentacaodao.next()) {
                 if(validaData(m.getData())){
                     objmovimentacaodao.cadastrarMovimentacao(m);
-                    JOptionPane.showMessageDialog(null, "Movimentação realizada com sucesso");
+                    if(m.getTipo().equals("Entrada")) {
+                        objestoquedao.acrescentaEstoque(m);
+                        JOptionPane.showMessageDialog(null, "Movimentação realizada com sucesso");
+                    }
+                    else{
+                        if(objestoquedao.retirarEstoque(m)){
+                            JOptionPane.showMessageDialog(null, "Movimentação realizada com sucesso");
+                            objestoquedao.verificaQuantidade(m);
+                        }
+                    }
                     txtcodigo.setText("");
                     txtvalor.setText("");
                     txtquantidade.setText("");
@@ -112,15 +118,20 @@ public class CadastraMovimentacaoController implements Initializable{
                 JOptionPane.showMessageDialog(null, "Codigo inexistente");
             }
 
-        } catch (Exception e) {
+        } catch (Exception er) {
             System.out.println(e);
         }
     }
 
     public boolean validaData(String data){
         int dia,mes,ano;
+        if(data.length()<10 || data.length()>10) {
+            JOptionPane.showMessageDialog(null,"Formato de data incorreto");
+            return false;
+        }
         String barra;
         barra=data.substring(2,3);
+
         if(!barra.equals("/")){
             JOptionPane.showMessageDialog(null,"Formato de data incorreto");
             return false;

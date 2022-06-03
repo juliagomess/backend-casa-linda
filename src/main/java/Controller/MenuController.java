@@ -22,7 +22,7 @@ public class MenuController {
 
             currentStage.close();
             Stage stage = new Stage();
-            FXMLLoader fxmlLoader = new FXMLLoader(LoginApplication.class.getResource("EmEstoque.fxml"));
+            FXMLLoader fxmlLoader = new FXMLLoader(LoginApplication.class.getResource("Estoque.fxml"));
             Scene scene = new Scene(fxmlLoader.load(), 620, 400);
             stage.setTitle("Em estoque");
             stage.setScene(scene);

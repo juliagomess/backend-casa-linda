@@ -4,10 +4,19 @@ public class Produtos {
     String nome;
     String fornecedor;
     String categoria;
-
     String descricao;
     int cod;
     double valor_venda;
+
+    public Produtos() {
+
+    }
+
+    public Produtos(String nome, String categoria, int cod) {
+        this.nome = nome;
+        this.categoria = categoria;
+        this.cod = cod;
+    }
 
     public String getNome() {
         return nome;
