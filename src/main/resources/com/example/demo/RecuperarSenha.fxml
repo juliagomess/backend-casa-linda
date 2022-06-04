@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1">
+    <children>
+        <ImageView fitHeight="400.0" fitWidth="591.0" layoutX="18.0" pickOnBounds="true" preserveRatio="true">
+            <image>
+                <Image url="@Casa-Linda.png" />
+            </image>
+            <effect>
+                <BoxBlur height="11.07" iterations="3" width="11.07" />
+            </effect>
+        </ImageView>
+        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#f58265" height="255.0" layoutX="180.0" layoutY="79.0" opacity="0.33" stroke="BLACK" strokeType="INSIDE" width="241.0" />
+        <Label layoutX="197.0" layoutY="100.0" text="Recuperar senha" textFill="WHITE">
+            <font>
+                <Font name="Times New Roman Bold" size="22.0" />
+            </font>
+        </Label>
+        <TextField layoutX="198.0" layoutY="200.0" prefHeight="35.0" prefWidth="205.0" promptText="Usuário" />
+        <Button layoutX="198.0" layoutY="258.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="205.0" style="-fx-background-color: rgb(255,42,0);" text="Enviar" textFill="WHITE">
+            <font>
+                <Font name="Times New Roman Bold" size="16.0" />
+            </font>
+        </Button>
+      <Label layoutX="198.0" layoutY="137.0" prefHeight="25.0" prefWidth="231.0" text="Insira o nome de usuário para " textFill="#ff2a00">
+         <font>
+            <Font name="Times New Roman" size="14.0" />
+         </font>
+      </Label>
+      <Label layoutX="198.0" layoutY="154.0" text="recuperar a senha" textFill="#ff2a00">
+         <font>
+            <Font name="Times New Roman" size="14.0" />
+         </font>
+      </Label>
+    </children>
+</AnchorPane>

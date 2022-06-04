@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<SplitPane dividerPositions="0.23076923076923078" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.CadastraProdutosController">
+    <items>
+        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="398.0" prefWidth="160.0" style="-fx-background-color: #ab9476;">
+            <children>
+                <Button onAction="#voltarTela" layoutX="8.0" layoutY="23.0" style="-fx-background-color: #ab9476;" text="Menu" textFill="WHITE">
+                    <font>
+                        <Font name="Times New Roman Bold" size="31.0" />
+                    </font>
+                </Button>
+            </children></AnchorPane>
+        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0" style="-fx-background-color: #D2B48C;">
+            <children>
+                <Label layoutX="26.0" layoutY="25.0" styleClass="Cor_titulos" text="Gerar relatório">
+                    <font>
+                        <Font name="Times New Roman" size="22.0" />
+                    </font>
+                </Label>
+            <Label layoutX="26.0" layoutY="104.0" text="Você deseja gerar relatório de acordo com:">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Label>
+            <CheckBox layoutX="26.0" layoutY="155.0" mnemonicParsing="false" text="Tipo(Entrada/Saida)">
+               <font>
+                  <Font size="14.0" />
+               </font></CheckBox>
+            <CheckBox layoutX="26.0" layoutY="182.0" mnemonicParsing="false" text="Nome Produto">
+               <font>
+                  <Font size="14.0" />
+               </font></CheckBox>
+            <CheckBox layoutX="26.0" layoutY="206.0" mnemonicParsing="false" text="Fornecedor">
+               <font>
+                  <Font name="Times New Roman" size="14.0" />
+               </font></CheckBox>
+            <CheckBox layoutX="26.0" layoutY="233.0" mnemonicParsing="false" text="Data">
+               <font>
+                  <Font name="Times New Roman" size="14.0" />
+               </font></CheckBox>
+            <Button layoutX="161.0" layoutY="306.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="135.0" style="-fx-background-color: rgb(255,42,0);" text="Gerar" textFill="WHITE">
+               <font>
+                  <Font name="Times New Roman Bold" size="16.0" />
+               </font>
+            </Button>
+            </children></AnchorPane>
+    </items>
+</SplitPane>
