@@ -14,7 +14,6 @@ public class Movimentacao {
         this.cod = cod;
         this.data = data;
     }
-
     public Movimentacao() {
 
     }

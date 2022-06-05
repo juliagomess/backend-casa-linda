@@ -15,6 +15,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
+import javafx.util.Callback;
 
 import java.io.IOException;
 import java.net.URL;
@@ -40,9 +41,8 @@ public class ListaProdutosController implements Initializable {
     @FXML
     private TableColumn<Produtos, Integer> tabelagrupo;
     @FXML
-    private TableColumn<Produtos,String> tabeladetalhes;
-    @FXML
-    private TableColumn<Button,String> detalhes;
+    private TableColumn<Produtos,Button> tabeladetalhes;
+
 
     ObservableList<Produtos> oblist  = FXCollections.observableArrayList();
     public void carregarCategorias(){
@@ -59,22 +59,8 @@ public class ListaProdutosController implements Initializable {
         Categoria categoria = filtro.getSelectionModel().getSelectedItem();
         return categoria.getNome();
     }
-    @FXML
-    protected void voltarTela(ActionEvent actionEvent) {
-        try {
-            Node node = (Node) actionEvent.getSource();
-            Stage currentStage = (Stage) node.getScene().getWindow();
-            currentStage.close();
-            Stage stage = new Stage();
-            FXMLLoader fxmlLoader = new FXMLLoader(LoginApplication.class.getResource("MenuProduto.fxml"));
-            Scene scene = new Scene(fxmlLoader.load(), 620, 400);
-            stage.setTitle("MenuProduto");
-            stage.setScene(scene);
-            stage.show();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
+
+
     public void filtrar() {
         tabela.getItems().clear();
         tabelacod.setCellValueFactory(new PropertyValueFactory("cod"));
@@ -89,7 +75,7 @@ public class ListaProdutosController implements Initializable {
             rsprodutosdao= objprodutosdao.filtrarCod(p);
             try{
                 while(rsprodutosdao.next()) {
-                    oblist.add(new Produtos(rsprodutosdao.getString("nome"), rsprodutosdao.getString("categoria"), rsprodutosdao.getInt("cod")));
+                    oblist.add(new Produtos(rsprodutosdao.getString("nome"), rsprodutosdao.getString("categoria"), rsprodutosdao.getInt("cod"), new Button("Ver")));
                     tabela.setItems(oblist);
                 }
             } catch (Exception e) {
@@ -100,7 +86,7 @@ public class ListaProdutosController implements Initializable {
             rsprodutosdao= objprodutosdao.filtrarNome(p);
             try{
                 while(rsprodutosdao.next()) {
-                    oblist.add(new Produtos(rsprodutosdao.getString("nome"), rsprodutosdao.getString("categoria"), rsprodutosdao.getInt("cod")));
+                    oblist.add(new Produtos(rsprodutosdao.getString("nome"), rsprodutosdao.getString("categoria"), rsprodutosdao.getInt("cod"), new Button("Ver")));
                     tabela.setItems(oblist);
                 }
             } catch (Exception e) {
@@ -112,7 +98,7 @@ public class ListaProdutosController implements Initializable {
             rsprodutosdao= objprodutosdao.filtrarCategoria(p);
             try{
                 while(rsprodutosdao.next()) {
-                    oblist.add(new Produtos(rsprodutosdao.getString("nome"), rsprodutosdao.getString("categoria"), rsprodutosdao.getInt("cod")));
+                    oblist.add(new Produtos(rsprodutosdao.getString("nome"), rsprodutosdao.getString("categoria"), rsprodutosdao.getInt("cod"), new Button("Ver")));
                     tabela.setItems(oblist);
                 }
             } catch (Exception e) {
@@ -127,18 +113,20 @@ public class ListaProdutosController implements Initializable {
         tabelacod.setCellValueFactory(new PropertyValueFactory("cod"));
         tabelagrupo.setCellValueFactory(new PropertyValueFactory("categoria"));
         tabelanome.setCellValueFactory(new PropertyValueFactory("nome"));
+        tabeladetalhes.setCellValueFactory(new PropertyValueFactory("botao"));
         Produtos p = new Produtos();
         ProdutosDAO objprodutosdao = new ProdutosDAO();
         ResultSet rsprodutosdao = objprodutosdao.listarTodos(p);
         try {
             while (rsprodutosdao.next()) {
-                oblist.add(new Produtos(rsprodutosdao.getString("nome"), rsprodutosdao.getString("categoria"), rsprodutosdao.getInt("cod")));
+                oblist.add(new Produtos(rsprodutosdao.getString("nome"), rsprodutosdao.getString("categoria"), rsprodutosdao.getInt("cod"), new Button("Ver")));
                 tabela.setItems(oblist);
             }
         }catch(Exception e){
             System.out.println(e);
         }
     }
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         carregaTabela();

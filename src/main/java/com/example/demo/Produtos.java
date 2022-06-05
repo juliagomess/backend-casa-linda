@@ -1,4 +1,15 @@
 package com.example.demo;
+import Controller.DetalhesProdutoController;
+import Controller.ListaProdutosController;
+import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
+import javafx.scene.Scene;
+import javafx.scene.control.Button;
+import javafx.stage.Stage;
+
+import java.io.IOException;
 
 public class Produtos {
     String nome;
@@ -8,14 +19,42 @@ public class Produtos {
     int cod;
     double valor_venda;
 
+    Button botao;
     public Produtos() {
 
     }
 
-    public Produtos(String nome, String categoria, int cod) {
+    public Button getBotao() {
+        return botao;
+    }
+
+    public void setBotao(Button botao) {
+        this.botao = botao;
+    }
+
+
+    public Produtos(String nome, String categoria, int cod, Button botao) {
+        DetalhesProdutoController d = new DetalhesProdutoController();
         this.nome = nome;
         this.categoria = categoria;
         this.cod = cod;
+        this.botao = botao;
+        botao.setOnAction((ActionEvent event) -> {
+            try {
+                 Node node = (Node) event.getSource();
+                 Stage currentStage = (Stage) node.getScene().getWindow();
+                currentStage.close();
+                Stage stage = new Stage();
+                FXMLLoader fxmlLoader = new FXMLLoader(LoginApplication.class.getResource("DetalhesProduto.fxml"));
+                Scene scene = new Scene(fxmlLoader.load(), 620, 400);
+                stage.setTitle("Detalhes de produto");
+                stage.setScene(scene);
+                stage.show();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        });
+        //botao.setOnAction();
     }
 
     public String getNome() {
