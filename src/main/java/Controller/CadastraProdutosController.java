@@ -39,7 +39,24 @@ public class CadastraProdutosController{
             Stage stage = new Stage();
             FXMLLoader fxmlLoader = new FXMLLoader(LoginApplication.class.getResource("MenuProduto.fxml"));
             Scene scene = new Scene(fxmlLoader.load(), 620, 400);
-            stage.setTitle("MenuProduto");
+            stage.setTitle("Menu Produto");
+            stage.setScene(scene);
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @FXML
+    protected void voltarTelaMenu(ActionEvent actionEvent) {
+        try {
+            Node node = (Node) actionEvent.getSource();
+            Stage currentStage = (Stage) node.getScene().getWindow();
+            currentStage.close();
+            Stage stage = new Stage();
+            FXMLLoader fxmlLoader = new FXMLLoader(LoginApplication.class.getResource("MenuPrincipal.fxml"));
+            Scene scene = new Scene(fxmlLoader.load(), 620, 400);
+            stage.setTitle("Menu");
             stage.setScene(scene);
             stage.show();
         } catch (IOException e) {

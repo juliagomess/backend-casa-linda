@@ -8,7 +8,7 @@
     <items>
         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="398.0" prefWidth="160.0" style="-fx-background-color: #ab9476;">
             <children>
-                <Button onAction="#voltarTela" layoutX="8.0" layoutY="23.0" style="-fx-background-color: #ab9476;" text="Menu" textFill="WHITE">
+                <Button onAction="#voltarTelaMenu" layoutX="8.0" layoutY="23.0" style="-fx-background-color: #ab9476;" text="Menu" textFill="WHITE">
                     <font>
                         <Font name="Times New Roman Bold" size="31.0" />
                     </font>

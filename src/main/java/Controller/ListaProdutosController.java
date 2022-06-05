@@ -60,6 +60,23 @@ public class ListaProdutosController implements Initializable {
         return categoria.getNome();
     }
 
+    @FXML
+    protected void voltarTelaMenu(ActionEvent actionEvent) {
+        try {
+            Node node = (Node) actionEvent.getSource();
+            Stage currentStage = (Stage) node.getScene().getWindow();
+            currentStage.close();
+            Stage stage = new Stage();
+            FXMLLoader fxmlLoader = new FXMLLoader(LoginApplication.class.getResource("MenuPrincipal.fxml"));
+            Scene scene = new Scene(fxmlLoader.load(), 620, 400);
+            stage.setTitle("Menu");
+            stage.setScene(scene);
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
 
     public void filtrar() {
         tabela.getItems().clear();
