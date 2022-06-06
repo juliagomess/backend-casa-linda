@@ -65,10 +65,13 @@ public class DetalhesProdutoController implements Initializable {
     private TextField txtnomee;
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        Produtos p = new Produtos();
+        Produtos.addOnChangeScreenListener(new Produtos.OnChangeScreen() {
+            @Override
+            public void OnScreenChanged(int cod) {
+                setCodigo(cod);
+            }
+        });
 
-        txtnomee.setText(p.getNome());
-        //txtnomee.setText("oi");
-        //System.out.println(getCodigo());
     }
 }
+

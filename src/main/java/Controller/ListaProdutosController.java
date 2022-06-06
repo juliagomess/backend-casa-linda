@@ -125,7 +125,7 @@ public class ListaProdutosController implements Initializable {
         }
     }
 
-    public void carregaTabela()  {
+    public void carregaTabela() {
         tabela.getItems().clear();
         tabelacod.setCellValueFactory(new PropertyValueFactory("cod"));
         tabelagrupo.setCellValueFactory(new PropertyValueFactory("categoria"));
@@ -139,7 +139,7 @@ public class ListaProdutosController implements Initializable {
                 oblist.add(new Produtos(rsprodutosdao.getString("nome"), rsprodutosdao.getString("categoria"), rsprodutosdao.getInt("cod"), new Button("Ver")));
                 tabela.setItems(oblist);
             }
-        }catch(Exception e){
+        } catch (Exception e) {
             System.out.println(e);
         }
     }

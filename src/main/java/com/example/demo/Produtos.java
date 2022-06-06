@@ -10,6 +10,7 @@ import javafx.scene.control.Button;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 public class Produtos {
     String nome;
@@ -49,12 +50,29 @@ public class Produtos {
                 Scene scene = new Scene(fxmlLoader.load(), 620, 400);
                 stage.setTitle("Detalhes de produto");
                 stage.setScene(scene);
+                notifyAllListeners(this.getCod());
                 stage.show();
             } catch (IOException e) {
                 e.printStackTrace();
             }
         });
         //botao.setOnAction();
+    }
+
+    private static ArrayList<OnChangeScreen> listeners = new ArrayList<>();
+
+    public static interface OnChangeScreen {
+        void OnScreenChanged(int cod);
+    }
+
+    public static void addOnChangeScreenListener(OnChangeScreen newListener) {
+        listeners.add(newListener);
+    }
+
+    private static void notifyAllListeners(int cod) {
+        for(OnChangeScreen l : listeners) {
+            l.OnScreenChanged(cod);
+        }
     }
 
     public String getNome() {
