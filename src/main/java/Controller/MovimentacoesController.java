@@ -19,6 +19,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 
+import javax.swing.*;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.ResultSet;
@@ -100,12 +101,18 @@ public class MovimentacoesController implements Initializable {
     }
 
     public void filtrar() {
+        String filtro;
+        try{
+            filtro = pegarCategoria();
+        } catch (Exception er) {
+            JOptionPane.showMessageDialog(null,"Você precisa especificar o filtro");
+            return;
+        }
         tabela.getItems().clear();
         tabelacod.setCellValueFactory(new PropertyValueFactory("cod"));
         tabelatipo.setCellValueFactory(new PropertyValueFactory("tipo"));
         tabelaqtd.setCellValueFactory(new PropertyValueFactory("quantidade"));
         tabeladata.setCellValueFactory(new PropertyValueFactory("data"));
-        String filtro = pegarCategoria();
         Movimentacao m = new Movimentacao();
         MovimentacaoDAO objmovimentacaodao = new MovimentacaoDAO();
         ResultSet rsmovimentacaodao;

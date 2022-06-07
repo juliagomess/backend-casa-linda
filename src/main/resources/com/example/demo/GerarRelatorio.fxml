@@ -33,7 +33,7 @@
                     </columns>
                 </TableView>
                 <TextField fx:id="pesquisa" layoutX="223.0" layoutY="50.0" prefHeight="25.0" prefWidth="187.0" promptText="Pesquisar..." />
-                <Button layoutX="358.0" onAction="#filtrar" layoutY="50.0" mnemonicParsing="false" text="Buscar" />
+                <Button layoutX="365.0" onAction="#filtrar" layoutY="50.0" mnemonicParsing="false" text="Gerar" />
                 <ComboBox fx:id="filtro" layoutX="223.0" layoutY="25.0" prefHeight="25.0" prefWidth="187.0" promptText="Filtrar por" />
             </children></AnchorPane>
     </items>

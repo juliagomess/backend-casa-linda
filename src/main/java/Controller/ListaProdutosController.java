@@ -17,6 +17,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 import javafx.util.Callback;
 
+import javax.swing.*;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.ResultSet;
@@ -79,11 +80,17 @@ public class ListaProdutosController implements Initializable {
 
 
     public void filtrar() {
+        String filtro;
+        try{
+            filtro = pegarCategoria();
+        } catch (Exception er) {
+            JOptionPane.showMessageDialog(null,"Você precisa especificar o filtro");
+            return;
+        }
         tabela.getItems().clear();
         tabelacod.setCellValueFactory(new PropertyValueFactory("cod"));
         tabelanome.setCellValueFactory(new PropertyValueFactory("nome"));
         tabelagrupo.setCellValueFactory(new PropertyValueFactory("categoria"));
-        String filtro = pegarCategoria();
         Produtos p = new Produtos();
         ProdutosDAO objprodutosdao =  new ProdutosDAO();
         ResultSet rsprodutosdao;

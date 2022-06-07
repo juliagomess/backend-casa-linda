@@ -19,6 +19,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 import javafx.util.Callback;
 
+import javax.swing.*;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.ResultSet;
@@ -90,6 +91,13 @@ public class GerarRelatorioController implements Initializable {
 
 
     public void filtrar() {
+        String filtro;
+        try{
+            filtro = pegarCategoria();
+        } catch (Exception er) {
+            JOptionPane.showMessageDialog(null,"Você precisa filtrar para gerar o relatório");
+            return;
+        }
         tabela.getItems().clear();
         tabelacodigo.setCellValueFactory(new PropertyValueFactory("cod"));
         tabelanome.setCellValueFactory(new PropertyValueFactory("nome"));
@@ -98,7 +106,7 @@ public class GerarRelatorioController implements Initializable {
         tabelatipo.setCellValueFactory(new PropertyValueFactory("tipo"));
         tabelavalor.setCellValueFactory(new PropertyValueFactory("valor"));
         tabelaquantidade.setCellValueFactory(new PropertyValueFactory("quantidade"));
-        String filtro = pegarCategoria();
+
         Produtos p = new Produtos();
         Movimentacao m = new Movimentacao();
         MovimentacaoDAO objmovimentacaodao =  new MovimentacaoDAO();
