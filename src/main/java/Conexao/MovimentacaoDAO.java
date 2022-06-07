@@ -45,9 +45,23 @@ public class MovimentacaoDAO {
     public ResultSet filtrarNome(Produtos objprodutos) {
         conn = new ConexaoDAO().conectaBD();
         try {
-            String sql = "select * from movimentacao where cod = (select cod from produtos where nome=?)";
+            String sql = "select * from movimentacoes where cod = (select cod from produtos where nome = ?)";
             PreparedStatement pstm = conn.prepareStatement(sql);
             pstm.setString(1,objprodutos.getNome());
+            ResultSet rs = pstm.executeQuery();
+            return rs;
+        }catch (SQLException e){
+            System.out.println(e);
+            return null;
+        }
+    }
+
+    public ResultSet filtrarFonecedor(Produtos objprodutos) {
+        conn = new ConexaoDAO().conectaBD();
+        try {
+            String sql = "select * from movimentacoes where cod in (select cod from produtos where fornecedor = ?)";
+            PreparedStatement pstm = conn.prepareStatement(sql);
+            pstm.setString(1,objprodutos.getFornecedor());
             ResultSet rs = pstm.executeQuery();
             return rs;
         }catch (SQLException e){

@@ -135,6 +135,20 @@ public class EstoqueDAO {
         }
     }
 
+    public ResultSet filtrarNomeCod(String nome) {
+        conn = new ConexaoDAO().conectaBD();
+        try {
+            String sql = "select * from estoque where nome = ? ";
+            PreparedStatement pstm = conn.prepareStatement(sql);
+            pstm.setString(1,nome);
+            ResultSet rs = pstm.executeQuery();
+            return rs;
+        }catch (SQLException e){
+            System.out.println(e);
+            return null;
+        }
+    }
+
 
 
     public ResultSet filtrarNome(Estoque objestoque) {

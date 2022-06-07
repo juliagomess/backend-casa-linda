@@ -18,16 +18,24 @@ public class ProdutosDAO {
         conn = new ConexaoDAO().conectaBD();
         try {
             String sql = "update produtos set nome = ?, categoria = ?, fornecedor = ?, valor_venda = ?, descricao = ? where cod = ?";
+            String sqle = "update estoque set nome = ? where cod = ?";
             PreparedStatement pstm = conn.prepareStatement(sql);
-            System.out.println(p.getCod()+p.getNome());
+            PreparedStatement pstme = conn.prepareStatement(sqle);
+
             pstm.setString(1,p.getNome());
             pstm.setString(2,p.getCategoria());
             pstm.setString(3,p.getFornecedor());
             pstm.setDouble(4,p.getValor_venda());
             pstm.setString(5,p.getDescricao());
             pstm.setInt(6,p.getCod());
+
+            pstme.setString(1,p.getNome());
+            pstme.setInt(2,p.getCod());
+
             pstm.execute();
+            pstme.execute();
             pstm.close();
+            pstme.close();
         }catch (SQLException e){
             System.out.println(e);
         }
@@ -90,6 +98,21 @@ public class ProdutosDAO {
             return null;
         }
     }
+
+    public ResultSet filtrarFonecedor(Produtos objprodutos) {
+        conn = new ConexaoDAO().conectaBD();
+        try {
+            String sql = "select * from produtos where fornecedor = ? ";
+            PreparedStatement pstm = conn.prepareStatement(sql);
+            pstm.setString(1,objprodutos.getFornecedor());
+            ResultSet rs = pstm.executeQuery();
+            return rs;
+        }catch (SQLException e){
+            System.out.println(e);
+            return null;
+        }
+    }
+
     public ResultSet filtrarCategoria(Produtos objprodutos) {
         conn = new ConexaoDAO().conectaBD();
         try {
@@ -133,7 +156,6 @@ public class ProdutosDAO {
     public void cadastrarProdutos(Produtos objprodutos) {
         conn = new ConexaoDAO().conectaBD();
             try {
-
                 String sql = "insert into produtos(nome,fornecedor, categoria, valor_venda, descricao) values (?,?,?,?,?)";
                 PreparedStatement pstm = conn.prepareStatement(sql);
                 pstm.setString(1, objprodutos.getNome());
