@@ -94,7 +94,6 @@ public class CadastraMovimentacaoController implements Initializable{
 
     @FXML
     protected void cadastrarMovimentacao(ActionEvent actionEvent) {
-        Produtos p = new Produtos();
         Movimentacao m = new Movimentacao();
         Estoque e=  new Estoque();
         try {
@@ -105,7 +104,7 @@ public class CadastraMovimentacaoController implements Initializable{
             m.setData(txtdata.getText());
         } catch (Exception er) {
             JOptionPane.showMessageDialog(null, "Você precisa preencher todos os campos");
-
+            return;
         }
         //validaValor(m.getValor());
         MovimentacaoDAO objmovimentacaodao = new MovimentacaoDAO();
@@ -134,6 +133,7 @@ public class CadastraMovimentacaoController implements Initializable{
             }
             else{
                 JOptionPane.showMessageDialog(null, "Codigo inexistente");
+                return;
             }
 
         } catch (Exception er) {

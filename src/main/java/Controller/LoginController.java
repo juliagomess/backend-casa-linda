@@ -44,6 +44,7 @@ public class LoginController {
             e.printStackTrace();
         }
     }
+
     @FXML
     protected void recsenhaTela(ActionEvent actionEvent) {
         try {

@@ -7,7 +7,7 @@
 <?import javafx.scene.shape.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.RecuperarSenhaController">
     <children>
         <ImageView fitHeight="400.0" fitWidth="591.0" layoutX="18.0" pickOnBounds="true" preserveRatio="true">
             <image>
@@ -24,7 +24,7 @@
             </font>
         </Label>
         <TextField layoutX="198.0" layoutY="200.0" prefHeight="35.0" prefWidth="205.0" promptText="Usuário" />
-        <Button layoutX="198.0" layoutY="258.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="205.0" style="-fx-background-color: rgb(255,42,0);" text="Enviar" textFill="WHITE">
+        <Button onAction="#recuperaSenha" layoutX="198.0" layoutY="258.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="205.0" style="-fx-background-color: rgb(255,42,0);" text="Enviar" textFill="WHITE">
             <font>
                 <Font name="Times New Roman Bold" size="16.0" />
             </font>
