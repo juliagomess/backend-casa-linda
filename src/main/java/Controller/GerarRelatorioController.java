@@ -1,8 +1,10 @@
 package Controller;
 
+import Conexao.MovimentacaoDAO;
 import Conexao.ProdutosDAO;
 import com.example.demo.Categoria;
 import com.example.demo.LoginApplication;
+import com.example.demo.Movimentacao;
 import com.example.demo.Produtos;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -24,7 +26,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
 
-public class ListaProdutosController implements Initializable {
+public class GerarRelatorioController implements Initializable {
     @FXML
     private ComboBox<Categoria> filtro;
     @FXML
@@ -33,25 +35,34 @@ public class ListaProdutosController implements Initializable {
     private ObservableList<Categoria> obsCategorias;
 
     @FXML
-    private TableView<Produtos> tabela;
+    private TableView<Movimentacao> tabela;
     @FXML
-    private TableColumn<Produtos, Integer> tabelacod;
+    private TableColumn<Movimentacao, Integer> tabelacodigo;
     @FXML
     private TableColumn<Produtos,String> tabelanome;
     @FXML
-    private TableColumn<Produtos, Integer> tabelagrupo;
+    private TableColumn<Produtos, String> tabelafornecedor;
     @FXML
-    private TableColumn<Produtos,Button> tabeladetalhes;
+    private TableColumn<Movimentacao, String> tabeladata;
+    @FXML
+    private TableColumn<Movimentacao, String> tabelatipo;
+    @FXML
+    private TableColumn<Movimentacao, Integer> tabelaquantidade;
+    @FXML
+    private TableColumn<Movimentacao, Integer> tabelavalor;
 
-
-    ObservableList<Produtos> oblist  = FXCollections.observableArrayList();
+    ObservableList<Movimentacao> oblist  = FXCollections.observableArrayList();
     public void carregarCategorias(){
         Categoria categoria1 = new Categoria(1,"Codigo");
         Categoria categoria2 = new Categoria(2,"Nome");
-        Categoria categoria3 = new Categoria(3,"Categoria");
+        Categoria categoria3 = new Categoria(3,"Fornecedor");
+        Categoria categoria4 = new Categoria(4,"Data");
+        Categoria categoria5 = new Categoria(5,"Tipo");
         categorias.add(categoria1);
         categorias.add(categoria2);
         categorias.add(categoria3);
+        categorias.add(categoria4);
+        categorias.add(categoria5);
         obsCategorias= FXCollections.observableArrayList(categorias);
         filtro.setItems(obsCategorias);
     }
@@ -80,73 +91,56 @@ public class ListaProdutosController implements Initializable {
 
     public void filtrar() {
         tabela.getItems().clear();
-        tabelacod.setCellValueFactory(new PropertyValueFactory("cod"));
+        tabelacodigo.setCellValueFactory(new PropertyValueFactory("cod"));
         tabelanome.setCellValueFactory(new PropertyValueFactory("nome"));
-        tabelagrupo.setCellValueFactory(new PropertyValueFactory("categoria"));
+        tabelafornecedor.setCellValueFactory(new PropertyValueFactory("fornecedor"));
+        tabeladata.setCellValueFactory(new PropertyValueFactory("data"));
+        tabelatipo.setCellValueFactory(new PropertyValueFactory("tipo"));
+        tabelavalor.setCellValueFactory(new PropertyValueFactory("valor"));
+        tabelaquantidade.setCellValueFactory(new PropertyValueFactory("quantidade"));
         String filtro = pegarCategoria();
         Produtos p = new Produtos();
-        ProdutosDAO objprodutosdao =  new ProdutosDAO();
+        Movimentacao m = new Movimentacao();
+        MovimentacaoDAO objmovimentacaodao =  new MovimentacaoDAO();
+        ProdutosDAO objprodutosdao = new ProdutosDAO();
+        ResultSet rsmovimentacaodao;
         ResultSet rsprodutosdao;
         if(filtro.equals("Codigo")) {
+            m.setCod(Integer.parseInt(pesquisa.getText()));
             p.setCod(Integer.parseInt(pesquisa.getText()));
-            rsprodutosdao= objprodutosdao.filtrarCod(p);
+            rsmovimentacaodao= objmovimentacaodao.filtrarCod(m);
+            rsprodutosdao =  objprodutosdao.filtrarCod(p);
             try{
-                while(rsprodutosdao.next()) {
-                    oblist.add(new Produtos(rsprodutosdao.getString("nome"), rsprodutosdao.getString("categoria"), rsprodutosdao.getInt("cod"), new Button("Ver")));
-                    tabela.setItems(oblist);
+                if(rsprodutosdao.next()){
+                     while(rsmovimentacaodao.next()) {
+                        oblist.add(new Movimentacao(rsmovimentacaodao.getString("tipo"), rsmovimentacaodao.getInt("quantidade"), rsmovimentacaodao.getInt("cod"), rsmovimentacaodao.getDouble("valor"), rsmovimentacaodao.getString("data"), rsprodutosdao.getString("fornecedor"), rsprodutosdao.getString("nome")));
+                        tabela.setItems(oblist);
+                    }
                 }
+
             } catch (Exception e) {
-                System.out.print(e);
+                System.out.print(e+"entrou");
             }
-        } else if(filtro.equals("Nome")) {
+        } /*else if(filtro.equals("Nome")) {
             p.setNome(pesquisa.getText());
-            rsprodutosdao= objprodutosdao.filtrarNome(p);
+            rsmovimentacaodao= objmovimentacaodao.filtrarNome(p);
             try{
-                while(rsprodutosdao.next()) {
-                    oblist.add(new Produtos(rsprodutosdao.getString("nome"), rsprodutosdao.getString("categoria"), rsprodutosdao.getInt("cod"), new Button("Ver")));
+                while(rsmovimentacaodao.next()) {
+                    oblist.add(new Movimentacao(rsmovimentacaodao.getString("tipo"),rsmovimentacaodao.getInt("quantidade"),rsmovimentacaodao.getInt("cod"), rsmovimentacaodao.getDouble("valor"),rsmovimentacaodao.getString("fornecedor"),rsmovimentacaodao.getString("nome"),rsmovimentacaodao.getString("data")));
                     tabela.setItems(oblist);
                 }
             } catch (Exception e) {
                 System.out.print(e);
             }
 
-        } else if(filtro.equals("Categoria")) {
-            p.setCategoria(pesquisa.getText());
-            rsprodutosdao= objprodutosdao.filtrarCategoria(p);
-            try{
-                while(rsprodutosdao.next()) {
-                    oblist.add(new Produtos(rsprodutosdao.getString("nome"), rsprodutosdao.getString("categoria"), rsprodutosdao.getInt("cod"), new Button("Ver")));
-                    tabela.setItems(oblist);
-                }
-            } catch (Exception e) {
-                System.out.print(e);
-            }
-
-        }
+        }*/
     }
 
-    public void carregaTabela() {
-        tabela.getItems().clear();
-        tabelacod.setCellValueFactory(new PropertyValueFactory("cod"));
-        tabelagrupo.setCellValueFactory(new PropertyValueFactory("categoria"));
-        tabelanome.setCellValueFactory(new PropertyValueFactory("nome"));
-        tabeladetalhes.setCellValueFactory(new PropertyValueFactory("botao"));
-        Produtos p = new Produtos();
-        ProdutosDAO objprodutosdao = new ProdutosDAO();
-        ResultSet rsprodutosdao = objprodutosdao.listarTodos(p);
-        try {
-            while (rsprodutosdao.next()) {
-                oblist.add(new Produtos(rsprodutosdao.getString("nome"), rsprodutosdao.getString("categoria"), rsprodutosdao.getInt("cod"), new Button("Ver")));
-                tabela.setItems(oblist);
-            }
-        } catch (Exception e) {
-            System.out.println(e);
-        }
-    }
+
+
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        carregaTabela();
         carregarCategorias();
     }
 }

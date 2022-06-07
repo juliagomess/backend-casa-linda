@@ -6,6 +6,10 @@ public class Movimentacao {
     private int quantidade;
     private int cod;
     private double valor;
+
+    private String fornecedor;
+
+    private String nome;
     private String data;
 
     public Movimentacao(String tipo, int quantidade, int cod, String data) {
@@ -16,6 +20,35 @@ public class Movimentacao {
     }
     public Movimentacao() {
 
+    }
+
+
+
+    public Movimentacao(String tipo, int quantidade, int cod, double valor, String data, String fornecedor, String nome) {
+        this.tipo = tipo;
+        this.quantidade = quantidade;
+        this.cod = cod;
+        this.valor = valor;
+        this.data = data;
+        this.fornecedor = fornecedor;
+        this.nome = nome;
+
+    }
+
+    public String getFornecedor() {
+        return fornecedor;
+    }
+
+    public void setFornecedor(String fornecedor) {
+        this.fornecedor = fornecedor;
+    }
+
+    public String getNome() {
+        return nome;
+    }
+
+    public void setNome(String nome) {
+        this.nome = nome;
     }
 
     public String getData() {

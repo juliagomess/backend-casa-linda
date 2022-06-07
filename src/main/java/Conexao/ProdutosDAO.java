@@ -35,11 +35,16 @@ public class ProdutosDAO {
     public void deletarProduto(int cod){
         conn = new ConexaoDAO().conectaBD();
         try {
-            String sql = "delete from produtos where cod = ?";
-            PreparedStatement pstm = conn.prepareStatement(sql);
-            pstm.setInt(1, cod);
-            pstm.execute();
-            pstm.close();
+            String sqlp = "delete from produtos where cod = ?";
+            String sqle = "delete from estoque where cod = ?";
+            PreparedStatement pstmp = conn.prepareStatement(sqlp);
+            PreparedStatement pstme = conn.prepareStatement(sqle);
+            pstmp.setInt(1, cod);
+            pstme.setInt(1, cod);
+            pstmp.execute();
+            pstme.execute();
+            pstmp.close();
+            pstme.close();
         }catch (SQLException e){
             System.out.println(e);
         }
@@ -59,6 +64,7 @@ public class ProdutosDAO {
     }
 
     public ResultSet filtrarCod(Produtos objprodutos) {
+
         conn = new ConexaoDAO().conectaBD();
         try {
             String sql = "select * from produtos where cod = ? ";

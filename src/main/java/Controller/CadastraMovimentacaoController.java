@@ -114,15 +114,16 @@ public class CadastraMovimentacaoController implements Initializable{
         try {
             if(rsmovimentacaodao.next()) {
                 if(validaData(m.getData())){
-                    objmovimentacaodao.cadastrarMovimentacao(m);
                     if(m.getTipo().equals("Entrada")) {
                         objestoquedao.acrescentaEstoque(m);
                         JOptionPane.showMessageDialog(null, "Movimentação realizada com sucesso");
+                        objmovimentacaodao.cadastrarMovimentacao(m);
                     }
                     else{
                         if(objestoquedao.retirarEstoque(m)){
                             JOptionPane.showMessageDialog(null, "Movimentação realizada com sucesso");
                             objestoquedao.verificaQuantidade(m);
+                            objmovimentacaodao.cadastrarMovimentacao(m);
                         }
                     }
                     txtcodigo.setText("");

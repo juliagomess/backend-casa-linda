@@ -49,7 +49,7 @@
          </cursor>
 
       </Button>
-      <Button layoutX="223.0" layoutY="274.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="155.0" style="-fx-background-color: rgb(255,42,0);" text="Relatório" textFill="WHITE">
+      <Button layoutX="223.0" layoutY="274.0" onAction="#RelatorioTela" mnemonicParsing="false" prefHeight="35.0" prefWidth="155.0" style="-fx-background-color: rgb(255,42,0);" text="Relatório" textFill="WHITE">
          <font>
             <Font name="Times New Roman Bold" size="16.0" />
          </font>

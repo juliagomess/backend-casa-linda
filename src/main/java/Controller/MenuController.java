@@ -77,7 +77,7 @@ public class MenuController {
         }
     }
 
-    //ADICIONAR TELA RELATORIO
+    @FXML
     protected void RelatorioTela(ActionEvent actionEvent) {
         try {
 
@@ -87,9 +87,9 @@ public class MenuController {
 
             currentStage.close();
             Stage stage = new Stage();
-            FXMLLoader fxmlLoader = new FXMLLoader(LoginApplication.class.getResource("RelatorioTela.fxml"));
+            FXMLLoader fxmlLoader = new FXMLLoader(LoginApplication.class.getResource("GerarRelatorio.fxml"));
             Scene scene = new Scene(fxmlLoader.load(), 620, 400);
-            stage.setTitle("Produto");
+            stage.setTitle("Gerar relatório");
             stage.setScene(scene);
             stage.show();
 
