@@ -33,7 +33,6 @@ public class EstoqueDAO {
             PreparedStatement pstm = conn.prepareStatement(sql);
             pstm.setInt(1,objestoque.getQuantidade());
             pstm.setInt(2,objestoque.getCod());
-            System.out.println(objestoque.getCod()+"\n"+objestoque.getQuantidade());
             pstm.execute();
             pstm.close();
 

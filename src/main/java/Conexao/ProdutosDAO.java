@@ -1,5 +1,6 @@
 package Conexao;
 
+import Controller.DetalhesProdutoController;
 import com.example.demo.Login;
 import com.example.demo.Movimentacao;
 import com.example.demo.Produtos;
@@ -13,6 +14,50 @@ import java.sql.SQLException;
 
 public class ProdutosDAO {
     Connection conn;
+    public void editaProduto(Produtos p){
+        conn = new ConexaoDAO().conectaBD();
+        try {
+            String sql = "update produtos set nome = ?, categoria = ?, fornecedor = ?, valor_venda = ?, descricao = ? where cod = ?";
+            PreparedStatement pstm = conn.prepareStatement(sql);
+            System.out.println(p.getCod()+p.getNome());
+            pstm.setString(1,p.getNome());
+            pstm.setString(2,p.getCategoria());
+            pstm.setString(3,p.getFornecedor());
+            pstm.setDouble(4,p.getValor_venda());
+            pstm.setString(5,p.getDescricao());
+            pstm.setInt(6,p.getCod());
+            pstm.execute();
+            pstm.close();
+        }catch (SQLException e){
+            System.out.println(e);
+        }
+    }
+    public void deletarProduto(int cod){
+        conn = new ConexaoDAO().conectaBD();
+        try {
+            String sql = "delete from produtos where cod = ?";
+            PreparedStatement pstm = conn.prepareStatement(sql);
+            pstm.setInt(1, cod);
+            pstm.execute();
+            pstm.close();
+        }catch (SQLException e){
+            System.out.println(e);
+        }
+    }
+    public ResultSet filtrarDetalhes(int cod) {
+        conn = new ConexaoDAO().conectaBD();
+        try {
+            String sql = "select * from produtos where cod = ? ";
+            PreparedStatement pstm = conn.prepareStatement(sql);
+            pstm.setInt(1,cod);
+            ResultSet rs = pstm.executeQuery();
+            return rs;
+        }catch (SQLException e){
+            System.out.println(e);
+            return null;
+        }
+    }
+
     public ResultSet filtrarCod(Produtos objprodutos) {
         conn = new ConexaoDAO().conectaBD();
         try {

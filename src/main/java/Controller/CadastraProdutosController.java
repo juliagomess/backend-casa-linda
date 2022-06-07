@@ -72,7 +72,7 @@ public class CadastraProdutosController{
                 p.setNome(txtnome.getText());
                 p.setCategoria(txtcategoria.getText());
                 p.setFornecedor(txtfornecedor.getText());
-                p.setValor_venda(Integer.parseInt(txtpreco.getText()));
+                p.setValor_venda(Double.parseDouble(txtpreco.getText()));
                 p.setDescricao(txtdescricao.getText());
             } catch (Exception e) {
                 JOptionPane.showMessageDialog(null, "Existem campos obrigatórios não preenchidos");

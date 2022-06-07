@@ -20,7 +20,7 @@ public class MenuMovimentacoesController {
             Stage stage = new Stage();
             FXMLLoader fxmlLoader = new FXMLLoader(LoginApplication.class.getResource("CadastraMovimentacao.fxml"));
             Scene scene = new Scene(fxmlLoader.load(), 620, 400);
-            stage.setTitle("Menu");
+            stage.setTitle("Cadastra Movimentações");
             stage.setScene(scene);
             stage.show();
         } catch (IOException e) {
