@@ -154,7 +154,10 @@ public class GerarRelatorioController implements Initializable {
                 System.out.print(e);
             }
         } else if(filtro.equals("Data")) {
-            
+            CadastraMovimentacaoController cm = new CadastraMovimentacaoController();
+            if(!cm.validaData(pesquisa.getText())) {
+                return;
+            }
             m.setData(pesquisa.getText());
             rsmovimentacaodao= objmovimentacaodao.filtrarData(m);
             try{
