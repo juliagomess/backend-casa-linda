@@ -23,8 +23,8 @@
                 <Font name="Times New Roman Bold" size="22.0" />
             </font>
         </Label>
-        <TextField layoutX="198.0" layoutY="200.0" prefHeight="35.0" prefWidth="205.0" promptText="Usuário" />
-        <Button onAction="#recuperaSenha" layoutX="198.0" layoutY="258.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="205.0" style="-fx-background-color: rgb(255,42,0);" text="Enviar" textFill="WHITE">
+        <TextField fx:id="email" layoutX="198.0" layoutY="200.0" prefHeight="35.0" prefWidth="205.0" promptText="E-mail" />
+        <Button layoutX="198.0" layoutY="258.0" mnemonicParsing="false" onAction="#recuperaSenha" prefHeight="35.0" prefWidth="205.0" style="-fx-background-color: rgb(255,42,0);" text="Enviar" textFill="WHITE">
             <font>
                 <Font name="Times New Roman Bold" size="16.0" />
             </font>
