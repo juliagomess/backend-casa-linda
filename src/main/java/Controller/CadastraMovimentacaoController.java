@@ -119,11 +119,15 @@ public class CadastraMovimentacaoController implements Initializable{
                         objmovimentacaodao.cadastrarMovimentacao(m);
                     }
                     else{
-                        if(objestoquedao.retirarEstoque(m)){
-                            JOptionPane.showMessageDialog(null, "Movimentação realizada com sucesso");
-                            objestoquedao.verificaQuantidade(m);
-                            objmovimentacaodao.cadastrarMovimentacao(m);
-                        }
+
+                            if (objestoquedao.retirarEstoque(m)) {
+                                if(rsmovimentacaodao.getDouble("valor_venda")==Double.parseDouble(txtvalor.getText())) {
+                                    JOptionPane.showMessageDialog(null, "Movimentação realizada com sucesso");
+                                    objestoquedao.verificaQuantidade(m);
+                                    objmovimentacaodao.cadastrarMovimentacao(m);
+                                }else JOptionPane.showMessageDialog(null, "Valor diferente do cadastrado");
+                            }
+
                     }
                     txtcodigo.setText("");
                     txtvalor.setText("");

@@ -24,7 +24,7 @@
                 </Label>
                 <Label layoutX="26.0" layoutY="79.0" text="Código*" />
                 <TextField fx:id="txtcodigo" layoutX="26.0" layoutY="96.0" prefHeight="25.0" prefWidth="186.0" />
-                <Label layoutX="243.0" layoutY="79.0" text="Valor*" />
+                <Label layoutX="243.0" layoutY="79.0" text="Valor Unitário*" />
                 <TextField fx:id="txtvalor" layoutX="243.0" layoutY="96.0" prefHeight="25.0" prefWidth="186.0" />
                 <Label layoutX="26.0" layoutY="131.0" text="Data*" />
                 <TextField fx:id="txtdata" layoutX="26.0" layoutY="148.0" prefHeight="25.0" prefWidth="186.0" />

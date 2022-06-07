@@ -24,4 +24,17 @@ public class UsuarioDAO {
             return null;
         }
     }
+    public ResultSet recuperaSenha(Login objlogin) {
+        conn = new ConexaoDAO().conectaBD();
+        try {
+            String sql = "select * from usuario where email = ?";
+            PreparedStatement pstm = conn.prepareStatement(sql);
+            pstm.setString(1,objlogin.getEmail());
+            ResultSet rs = pstm.executeQuery();
+            return rs;
+        }catch (SQLException e){
+            JOptionPane.showMessageDialog(null, e);
+            return null;
+        }
+    }
 }

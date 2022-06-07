@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.effect.*?>
 <?import javafx.scene.image.*?>
@@ -23,13 +24,24 @@
                 <Font name="Times New Roman Bold" size="22.0" />
             </font>
         </Label>
-        <TextField fx:id="email" layoutX="198.0" layoutY="200.0" prefHeight="35.0" prefWidth="205.0" promptText="E-mail" />
-        <Button layoutX="198.0" layoutY="258.0" mnemonicParsing="false" onAction="#recuperaSenha" prefHeight="35.0" prefWidth="205.0" style="-fx-background-color: rgb(255,42,0);" text="Enviar" textFill="WHITE">
+        <TextField fx:id="txtemail" layoutX="198.0" layoutY="189.0" prefHeight="35.0" prefWidth="205.0" promptText="E-mail" />
+        <Button layoutX="198.0" layoutY="238.0" mnemonicParsing="false" onAction="#recuperaSenha" prefHeight="35.0" prefWidth="205.0" style="-fx-background-color: rgb(255,42,0);" text="Enviar" textFill="WHITE">
             <font>
                 <Font name="Times New Roman Bold" size="16.0" />
             </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
         </Button>
-      <Label layoutX="198.0" layoutY="137.0" prefHeight="25.0" prefWidth="231.0" text="Insira o nome de usuário para " textFill="#ff2a00">
+        <Button layoutX="198.0" layoutY="281.0" mnemonicParsing="false" onAction="#voltarTelaLogin" prefHeight="35.0" prefWidth="205.0" style="-fx-background-color: rgb(255,42,0);" text="Voltar" textFill="WHITE">
+            <font>
+                <Font name="Times New Roman Bold" size="16.0" />
+            </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+        </Button>
+      <Label layoutX="198.0" layoutY="137.0" prefHeight="25.0" prefWidth="231.0" text="Insira seu email para " textFill="#ff2a00">
          <font>
             <Font name="Times New Roman" size="14.0" />
          </font>
