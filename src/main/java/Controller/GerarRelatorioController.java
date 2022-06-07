@@ -107,12 +107,12 @@ public class GerarRelatorioController implements Initializable {
         ResultSet rsprodutosdao;
         if(filtro.equals("Codigo")) {
             m.setCod(Integer.parseInt(pesquisa.getText()));
-            p.setCod(Integer.parseInt(pesquisa.getText()));
             rsmovimentacaodao= objmovimentacaodao.filtrarCod(m);
-            rsprodutosdao =  objprodutosdao.filtrarCod(p);
             try{
-                if(rsprodutosdao.next()){
-                     while(rsmovimentacaodao.next()) {
+                 while(rsmovimentacaodao.next()) {
+                     p.setCod(rsmovimentacaodao.getInt("cod"));
+                     rsprodutosdao =  objprodutosdao.filtrarCod(p);
+                     if(rsprodutosdao.next()) {
                         oblist.add(new Movimentacao(rsmovimentacaodao.getString("tipo"), rsmovimentacaodao.getInt("quantidade"), rsmovimentacaodao.getInt("cod"), rsmovimentacaodao.getDouble("valor"), rsmovimentacaodao.getString("data"), rsprodutosdao.getString("fornecedor"), rsprodutosdao.getString("nome")));
                         tabela.setItems(oblist);
                     }
@@ -124,10 +124,11 @@ public class GerarRelatorioController implements Initializable {
         } else if(filtro.equals("Nome")) {
             p.setNome(pesquisa.getText());
             rsmovimentacaodao = objmovimentacaodao.filtrarNome(p);
-            rsprodutosdao =  objprodutosdao.filtrarNome(p);
             try{
-                if(rsprodutosdao.next()){
-                    while(rsmovimentacaodao.next()) {
+                while(rsmovimentacaodao.next()) {
+                    p.setCod(rsmovimentacaodao.getInt("cod"));
+                    rsprodutosdao =  objprodutosdao.filtrarCod(p);
+                    if(rsprodutosdao.next()) {
                         oblist.add(new Movimentacao(rsmovimentacaodao.getString("tipo"), rsmovimentacaodao.getInt("quantidade"), rsmovimentacaodao.getInt("cod"), rsmovimentacaodao.getDouble("valor"), rsmovimentacaodao.getString("data"), rsprodutosdao.getString("fornecedor"), rsprodutosdao.getString("nome")));
                         tabela.setItems(oblist);
                     }
@@ -139,10 +140,11 @@ public class GerarRelatorioController implements Initializable {
         } else if(filtro.equals("Fornecedor")) {
             p.setFornecedor(pesquisa.getText());
             rsmovimentacaodao = objmovimentacaodao.filtrarFonecedor(p);
-            rsprodutosdao =  objprodutosdao.filtrarFonecedor(p);
             try{
-                if(rsprodutosdao.next()){
-                    while(rsmovimentacaodao.next()) {
+                while(rsmovimentacaodao.next()) {
+                    p.setCod(rsmovimentacaodao.getInt("cod"));
+                    rsprodutosdao =  objprodutosdao.filtrarCod(p);
+                    if(rsprodutosdao.next()){
                         oblist.add(new Movimentacao(rsmovimentacaodao.getString("tipo"), rsmovimentacaodao.getInt("quantidade"), rsmovimentacaodao.getInt("cod"), rsmovimentacaodao.getDouble("valor"), rsmovimentacaodao.getString("data"), rsprodutosdao.getString("fornecedor"), rsprodutosdao.getString("nome")));
                         tabela.setItems(oblist);
                     }
@@ -152,13 +154,14 @@ public class GerarRelatorioController implements Initializable {
                 System.out.print(e);
             }
         } else if(filtro.equals("Data")) {
+            
             m.setData(pesquisa.getText());
-            //p.setCod(pesquisa.getText());
             rsmovimentacaodao= objmovimentacaodao.filtrarData(m);
             try{
                 while(rsmovimentacaodao.next()) {
+                    p.setCod(rsmovimentacaodao.getInt("cod"));
                     rsprodutosdao =  objprodutosdao.filtrarCod(p);
-                    while(rsprodutosdao.next()) {
+                    if(rsprodutosdao.next()) {
                         oblist.add(new Movimentacao(rsmovimentacaodao.getString("tipo"), rsmovimentacaodao.getInt("quantidade"), rsmovimentacaodao.getInt("cod"), rsmovimentacaodao.getDouble("valor"), rsmovimentacaodao.getString("data"), rsprodutosdao.getString("fornecedor"), rsprodutosdao.getString("nome")));
                         tabela.setItems(oblist);
                     }
@@ -169,16 +172,17 @@ public class GerarRelatorioController implements Initializable {
             }
         } else if(filtro.equals("Tipo")) {
             m.setTipo(pesquisa.getText());
-            //p.setCod(Integer.parseInt(pesquisa.getText()));
             rsmovimentacaodao= objmovimentacaodao.filtrarTipo(m);
-            rsprodutosdao =  objprodutosdao.filtrarCod(p);
             try{
-                while(rsmovimentacaodao.next()){
-                    while(rsprodutosdao.next()) {
+                while(rsmovimentacaodao.next()) {
+                    p.setCod(rsmovimentacaodao.getInt("cod"));
+                    rsprodutosdao =  objprodutosdao.filtrarCod(p);
+                    if(rsprodutosdao.next()) {
                         oblist.add(new Movimentacao(rsmovimentacaodao.getString("tipo"), rsmovimentacaodao.getInt("quantidade"), rsmovimentacaodao.getInt("cod"), rsmovimentacaodao.getDouble("valor"), rsmovimentacaodao.getString("data"), rsprodutosdao.getString("fornecedor"), rsprodutosdao.getString("nome")));
                         tabela.setItems(oblist);
                     }
                 }
+
             } catch (Exception e) {
                 System.out.print(e);
             }
